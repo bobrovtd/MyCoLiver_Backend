@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
 from app.schemas.ad import AdCreateSchema, AdSchema, AdUpdateSchema
 from app.repositories.ad import AdRepository
 

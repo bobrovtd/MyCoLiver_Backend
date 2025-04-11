@@ -3,7 +3,9 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 
 from app.core.database import create_tables, delete_tables
+
 from app.api.v1.ad import router as ad_router
+from app.api.v1.user import router as user_router
 
 
 @asynccontextmanager
@@ -16,6 +18,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+
 
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
 async def welcome():
@@ -38,4 +41,6 @@ async def welcome():
     </html>
     """
 
+
 app.include_router(ad_router)
+app.include_router(user_router)
